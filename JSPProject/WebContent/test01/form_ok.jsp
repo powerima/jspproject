@@ -23,7 +23,7 @@
 		conn = DriverManager.getConnection(
 				"jdbc:oracle:thin:@//localhost:1521/xe", "system", "1234");
 		
-		sql = "insert into t1026(custno, custname, kor, eng) ";
+		sql = "insert into tbl_test01(custno, custname, kor, eng) ";
 		sql += "values(?,?,?,?)";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, custno);
