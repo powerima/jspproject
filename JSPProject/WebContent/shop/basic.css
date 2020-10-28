@@ -4,8 +4,7 @@ body{
 }
 header{
 	padding-top:1px;
-	color:while;
-	height:70px;	
+	color:while;	
 	background:dodgerblue;
 	text-align:center;
 	color:LightCyan;
@@ -32,6 +31,9 @@ footer{
 	background:dodgerblue;	
 	font-size: 12px;
 	color:LightCyan;	
+}
+#login{
+	font-size:13px;
 }
 #title{
 	text-align:center;	

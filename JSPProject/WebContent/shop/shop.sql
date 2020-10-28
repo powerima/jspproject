@@ -1,3 +1,13 @@
+-- 회원 로그인 테이블
+create table member_tbl_shop(
+	id varchar2(20) not null primary key,
+	passwd varchar2(20) not null);
+	
+insert into member_tbl_shop(id, passwd)
+values('ppk', '1234');
+insert into member_tbl_shop(id, passwd)
+values('admin', '1234');
+
 
 -- 회원 목록 테이블
 create table member_tbl_02(

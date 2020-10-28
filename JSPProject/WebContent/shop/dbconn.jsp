@@ -3,8 +3,8 @@
 <%@ page import="java.sql.*" %>
 <%
 	String jdbc = "jdbc:oracle:thin:@//localhost:1521/xe";
-	String id = "system";
-	String pwd = "1234";
+	String dbid = "system";
+	String dbpwd = "1234";
 	String sql = "";
 	
 	Connection conn = null;
@@ -13,5 +13,5 @@
 
 
 	Class.forName("oracle.jdbc.OracleDriver");
-	conn = DriverManager.getConnection(jdbc, id, pwd);
+	conn = DriverManager.getConnection(jdbc, dbid, dbpwd);
 %>

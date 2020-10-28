@@ -4,6 +4,9 @@
 <%@ include file="dbconn.jsp" %>
 
 <%
+	if(sid.equals("")){
+		response.sendRedirect("login.jsp");
+	}
 	try{
 		sql = "select pcode, pname, " +
 			"TO_CHAR(pdate, 'YYYY-MM-DD') as pdate, " +

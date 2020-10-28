@@ -4,6 +4,9 @@
 <%@ include file="dbconn.jsp" %>
 
 <%
+	if(sid.equals("")){
+		response.sendRedirect("login.jsp");
+	}
 	String pageNum = request.getParameter("pageNum");	
 	if(pageNum == null){
 		pageNum = "1";

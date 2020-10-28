@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="top.jsp" %>
+<%
+	if(sid.equals("")){
+		response.sendRedirect("login.jsp");
+	}
+%>
 <section>
 	<div id=title>
 		<h3>쇼핑몰 상품 등록</h3>
