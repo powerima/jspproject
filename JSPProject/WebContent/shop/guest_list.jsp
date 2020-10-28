@@ -79,10 +79,10 @@
 		int startPage = 1;
 		
 		if(currentPage % 10 != 0){
-			startPage = (int)(currentPage/10)*10 + 1;			
+			startPage = (int)(currentPage/pageSize)*pageSize + 1;			
 		}
 		else{
-			startPage = ((int)(currentPage/10)-1)*10 + 1;			
+			startPage = ((int)(currentPage/pageSize)-1)*pageSize + 1;			
 		}
 		
 		int pageBlock = 10;
