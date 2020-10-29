@@ -8,7 +8,8 @@
 	String jdbc = "jdbc:oracle:thin:@//localhost:1521/xe";
 	String dbid = "system";
 	String dbpwd = "1234";
-	String sql = "";
+	String sql = "";	
+	String company = "";
 	
 	Connection conn = null;
 	PreparedStatement pstmt = null;	
@@ -18,13 +19,20 @@
 		Class.forName("oracle.jdbc.OracleDriver");
 		conn = DriverManager.getConnection(jdbc, dbid, dbpwd);
 		
+		sql = "select * from vote_tbl_ch13 where ccode = ?"	;
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, pool);
+		rs = pstmt.executeQuery();
+		if(rs.next()){			
+			company = rs.getString("company");
+		}
+		
 		sql = "update vote_tbl_ch13 set ";
 		sql += "vote_cnt = vote_cnt+1 where ccode = ?";
 		pstmt = conn.prepareStatement(sql);		
 		pstmt.setString(1, pool);
 				
-		pstmt.executeUpdate();
-		
+		pstmt.executeUpdate();		
 	}catch(Exception ex){
 		ex.printStackTrace();
 	}finally{
@@ -36,9 +44,9 @@
 <section>
 
 	<script>
-		alert('투표하였습니다.');
+		alert('<%=company%>에 투표하였습니다.');
 		location.href="vote_result.jsp";
-	</script>
+	</script>	
 </section>
 <%@ include file="bottom.jsp" %>
 </html>

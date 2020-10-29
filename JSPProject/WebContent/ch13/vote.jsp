@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="top.jsp" %>
+
 <section>
 	<div id="title">
 		<h3>종아하는 기업 투표하기</h3>

@@ -29,12 +29,9 @@ nav{
 	background:steelblue;	
 	padding:10px;
 	font-size:14px;
-	
-	
 }
-log_nav{		
-	height:60px;
-	font-size:13px;
+log_nav{			
+	font-size:12px;
 }
 section{
 	background:lightcyan;
@@ -46,7 +43,7 @@ footer{
 	background:steelblue;
 	padding:10px;
 	text-align:center;
-	font-size:14px;
+	font-size:12px;
 }
 
 #title{
