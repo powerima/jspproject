@@ -1,3 +1,16 @@
+/*
+ * 	2020. 10. 30
+ * 
+ * 	mvc 패턴 
+ * 
+ * 	Servlet 으로 생성된 클래스
+ * 
+ *  WebContent - mvc - list_EL.jsp
+ * 	Java Resource - mvc 소스폴더 
+ * 
+ * 	목록 보기 EL 형식 를 위한 컨트롤러
+ * 
+ */
 package controller;
 
 import java.io.IOException;

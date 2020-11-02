@@ -1,3 +1,17 @@
+/*
+ * 	2020. 10. 30
+ * 
+ * 	mvc 패턴 
+ * 
+ * 	Servlet 으로 생성된 클래스
+ * 
+ *  WebContent - mvc - list.jsp
+ * 	Java Resource - mvc 소스폴더 
+ * 
+ * 	목록 보기를 위한 컨트롤러
+ * 
+ */
+
 package controller;
 
 import java.io.IOException;

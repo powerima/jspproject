@@ -1,3 +1,19 @@
+/*
+ * 	2020. 10. 30
+ * 
+ * 	mvc 패턴 
+ * 
+ * 	DTO 클래스
+ * 
+ *  WebContent - mvc
+ * 	Java Resource - mvc - mvc.sql 
+ * 		
+ * 
+ * 	member_tbl_mvc table
+ * 	
+ * 
+ */
+
 package model;
 
 public class Member {
@@ -6,16 +22,15 @@ public class Member {
 	private String name;
 	private String email;
 
+	public Member() {
+		
+	}
 	public Member(String id, String pwd, String name, String email) {
 		this.id = id;
 		this.pwd = pwd;
 		this.name = name;
 		this.email = email;
 				
-	}
-
-	public Member() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getId() {

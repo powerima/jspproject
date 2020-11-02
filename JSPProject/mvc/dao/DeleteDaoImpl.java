@@ -1,3 +1,15 @@
+/*
+ * 	2020. 10. 30
+ * 
+ * 	mvc 패턴 
+ * 
+ * 	DAO 클래스
+ * 
+ *  WebContent - mvc 폴더
+ * 	Java Resource - mvc - DeleteController.java
+ * 
+ */
+
 package dao;
 
 import java.sql.*;

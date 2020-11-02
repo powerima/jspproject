@@ -1,3 +1,13 @@
+/*
+ * 	2020. 10. 30
+ * 
+ * 	mvc 패턴 DBConnection
+ * 
+ *  WebContent - mvc 폴더
+ * 	Java Resource - mvc 소스폴더 
+ * 
+ * 
+ */
 package conn;
 
 import java.sql.Connection;

@@ -1,3 +1,15 @@
+/*
+ * 	2020. 10. 30
+ * 
+ * 	mvc 패턴 
+ * 
+ * 	Servlet 으로 생성된 클래스
+ * 
+ *  WebContent - mvc 폴더
+ * 	Java Resource - mvc 소스폴더 
+ * 
+ */
+
 package controller;
 
 import java.io.IOException;
