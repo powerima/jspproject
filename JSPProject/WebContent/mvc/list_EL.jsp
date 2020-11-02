@@ -23,9 +23,9 @@
 		</tr>
 		<c:forEach var='m' items="${list }">
 			<tr>
-				<td><a href="delete.jsp?id=${m.id }">${m.id }</a></td>
+				<td><a href="/JSPProject2/DeleteController?id=${m.id }">${m.id }</a></td>
 				<td>${m.pwd }</td>
-				<td>${m.name }</td>
+				<td><a href="/JSPProject2/EditController?id=%{m.id}">${m.name }</a></td>
 				<td>${m.email }</td>
 			</tr>
 		</c:forEach>
