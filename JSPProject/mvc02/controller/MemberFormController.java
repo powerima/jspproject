@@ -34,29 +34,7 @@ public class MemberFormController extends HttpServlet {
 		// TODO Auto-generated method stub
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		int custno = Integer.parseInt(request.getParameter("custno"));
-		String custname = request.getParameter("custname");
-		String phone = request.getParameter("phone");
-		String address = request.getParameter("address");
-		String joindate = request.getParameter("joindate");
-		String grade = request.getParameter("grade");
-		String city = request.getParameter("city");
-		
-		MemberVo m = new MemberVo();		
-		m.setCustno(custno);
-		m.setCustname(custname);
-		m.setPhone(phone);
-		m.setAddress(address);
-		m.setJoindate(joindate);
-		m.setGrade(grade);
-		m.setCity(city);
-		
-		MemberService ms = new MemberServiceImpl();
-		ms.insert(m);
-		
-		RequestDispatcher dispatcher 
-					= request.getRequestDispatcher("MemberSelectController");
-		dispatcher.forward(request, response);		
+	
 	}
 
 	/**

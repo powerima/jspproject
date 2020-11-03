@@ -7,8 +7,9 @@
 	<div id=title>	
 		<h3>쇼핑몰 회원 등록</h3>
 	</div>
-	<form name=f1 action="/JSPProject/MemberFormController">
+	<form name=f1 action="/JSPProject/MemberController">		
 		<table border="1" align="center" width="600">
+			<input type="hidden" name="flag" value="i">
 			<tr>
 				<td align="center">회원번호</td>
 				<td><input type="text" name="custno" ></td>
