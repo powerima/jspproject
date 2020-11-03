@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,8 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.MemberVo;
-import service.MemberSelectService;
-import service.MemberSelectServiceImpl;
+import service.*;
 
 /**
  * Servlet implementation class MemberSelectController
@@ -35,14 +35,22 @@ public class MemberSelectController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
-		MemberVo m = new MemberVo();
-		MemberSelectService ms = new MemberSelectServiceImpl();
 		
-		ArrayList<MemberVo> list = (ArrayList<MemberVo>)ms.selectAll(m);
+		request.setCharacterEncoding("utf-8");
+		
+		String ch1 = request.getParameter("ch1");
+		String ch2 = request.getParameter("ch2");
+						
+		MemberService ms = new MemberServiceImpl();
+		MemberVo m = new MemberVo();
+		m.setCh1(ch1);
+		m.setCh2(ch2);
+		
+		List<MemberVo> list = (ArrayList<MemberVo>)ms.selectAll(m);
 		request.setAttribute("list", list);
 		
-		RequestDispatcher dispatcher
-				= request.getRequestDispatcher("/mvc02/member_list_jstl.jsp");
+		RequestDispatcher dispatcher = 
+						request.getRequestDispatcher("mvc02/member_list_jstl.jsp");
 		dispatcher.forward(request, response);
 	}
 

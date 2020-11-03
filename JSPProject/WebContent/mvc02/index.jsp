@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="top.jsp" %>
 <section>
-	<div id="title">
+	<div id=title>	
 		<h3>쇼핑몰 회원 관리 프로그램</h3>
 	</div>
 	&nbsp;&nbsp;쇼핑몰 회원정보와 회원 매출 정보 데이터 베이스를 구축하고 회원관리 프로그램을

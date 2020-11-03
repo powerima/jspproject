@@ -1,13 +1,3 @@
-/*
- * 
- * 	2020. 11. 02
- * 
- * 	Controller class - servlet
- * 
- * 	Java Resource - mvc02
- * 	WebContent - mvc02
- * 
- */
 package controller;
 
 import java.io.IOException;
@@ -20,20 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.MemberVo;
-import service.FormService;
-import service.FormServiceImpl;
+import service.*;
 
 /**
- * Servlet implementation class FormController
+ * Servlet implementation class MemberFormController
  */
-@WebServlet("/FormController")
-public class FormController extends HttpServlet {
+@WebServlet("/MemberFormController")
+public class MemberFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FormController() {
+    public MemberFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,13 +30,11 @@ public class FormController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//	response.getWriter().append("Served at: ").append(request.getContextPath());
+		// response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		FormService fs = new FormServiceImpl();
 		int custno = Integer.parseInt(request.getParameter("custno"));
-		
 		String custname = request.getParameter("custname");
 		String phone = request.getParameter("phone");
 		String address = request.getParameter("address");
@@ -55,7 +42,7 @@ public class FormController extends HttpServlet {
 		String grade = request.getParameter("grade");
 		String city = request.getParameter("city");
 		
-		MemberVo m = new MemberVo();
+		MemberVo m = new MemberVo();		
 		m.setCustno(custno);
 		m.setCustname(custname);
 		m.setPhone(phone);
@@ -64,12 +51,12 @@ public class FormController extends HttpServlet {
 		m.setGrade(grade);
 		m.setCity(city);
 		
-		fs.insert(m);
+		MemberService ms = new MemberServiceImpl();
+		ms.insert(m);
 		
-		RequestDispatcher dispatcher
-			= request.getRequestDispatcher("MemberSelectController");
-		dispatcher.forward(request, response);
-		
+		RequestDispatcher dispatcher 
+					= request.getRequestDispatcher("MemberSelectController");
+		dispatcher.forward(request, response);		
 	}
 
 	/**

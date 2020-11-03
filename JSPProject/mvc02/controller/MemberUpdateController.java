@@ -13,16 +13,16 @@ import dto.MemberVo;
 import service.*;
 
 /**
- * Servlet implementation class MemberDeleteController
+ * Servlet implementation class MemberUpdateController
  */
-@WebServlet("/MemberDeleteController")
-public class MemberDeleteController extends HttpServlet {
+@WebServlet("/MemberUpdateController")
+public class MemberUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberDeleteController() {
+    public MemberUpdateController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,19 +35,29 @@ public class MemberDeleteController extends HttpServlet {
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		int custno = Integer.parseInt(request.getParameter("custno"));
+		String custname = request.getParameter("custname");
+		String phone = request.getParameter("phone");
+		String address = request.getParameter("address");
+		String joindate = request.getParameter("joindate");
+		String grade = request.getParameter("grade");
+		String city = request.getParameter("city");
 		
 		MemberService ms = new MemberServiceImpl();
 		MemberVo m = new MemberVo();
 		
 		m.setCustno(custno);
+		m.setCustname(custname);
+		m.setPhone(phone);
+		m.setAddress(address);
+		m.setJoindate(joindate);
+		m.setGrade(grade);
+		m.setCity(city);
 		
-		ms.delete(m);
+		ms.update(m);
 		
 		RequestDispatcher dispatcher
 					= request.getRequestDispatcher("MemberSelectController");
-		dispatcher.forward(request, response);
-		
-		
+		dispatcher.forward(request, response);		
 	}
 
 	/**

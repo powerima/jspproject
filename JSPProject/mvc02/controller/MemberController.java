@@ -1,28 +1,23 @@
 package controller;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dto.MemberVo;
-import service.*;
-
 /**
- * Servlet implementation class MemberDeleteController
+ * Servlet implementation class MemberController
  */
-@WebServlet("/MemberDeleteController")
-public class MemberDeleteController extends HttpServlet {
+@WebServlet("/MemberController")
+public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberDeleteController() {
+    public MemberController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,22 +27,7 @@ public class MemberDeleteController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// response.getWriter().append("Served at: ").append(request.getContextPath());
-		
-		int custno = Integer.parseInt(request.getParameter("custno"));
-		
-		MemberService ms = new MemberServiceImpl();
-		MemberVo m = new MemberVo();
-		
-		m.setCustno(custno);
-		
-		ms.delete(m);
-		
-		RequestDispatcher dispatcher
-					= request.getRequestDispatcher("MemberSelectController");
-		dispatcher.forward(request, response);
-		
-		
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

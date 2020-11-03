@@ -13,16 +13,16 @@ import dto.MemberVo;
 import service.*;
 
 /**
- * Servlet implementation class MemberDeleteController
+ * Servlet implementation class MemberEditController
  */
-@WebServlet("/MemberDeleteController")
-public class MemberDeleteController extends HttpServlet {
+@WebServlet("/MemberEditController")
+public class MemberEditController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberDeleteController() {
+    public MemberEditController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,17 +37,13 @@ public class MemberDeleteController extends HttpServlet {
 		int custno = Integer.parseInt(request.getParameter("custno"));
 		
 		MemberService ms = new MemberServiceImpl();
-		MemberVo m = new MemberVo();
+		MemberVo m = ms.edit(custno);
 		
-		m.setCustno(custno);
-		
-		ms.delete(m);
+		request.setAttribute("m", m);
 		
 		RequestDispatcher dispatcher
-					= request.getRequestDispatcher("MemberSelectController");
-		dispatcher.forward(request, response);
-		
-		
+					= request.getRequestDispatcher("mvc02/member_edit.jsp");
+		dispatcher.forward(request, response);		
 	}
 
 	/**
