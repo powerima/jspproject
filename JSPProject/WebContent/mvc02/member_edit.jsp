@@ -6,8 +6,9 @@
 	<div id="title">
 		<h3>쇼핑몰 회원 수정하기</h3>
 	</div>
-	<form name="member_form" action="/JSPProject/MemberUpdateController">		  
+	<form name="member_form" action="/JSPProject/MemberController">		  
 		<table border="1" align="center" width="600">
+		<input type="hidden" name="flag" value="u"> 
 			<tr>
 				<td align="center">회원번호</td>
 				<td><input type="text" 
@@ -47,7 +48,7 @@
 				<td colspan="2">
 					<input type="submit" value="등록">
 					<input type="button" value="조회" 
-						onclick=location.href="/JSPProject/MemberSelectController">
+						onclick=location.href="/JSPProject/MemberController?flag=r">
 				</td>
 			</tr>
 		</table>

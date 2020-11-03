@@ -41,7 +41,7 @@
 			<tr align="center">
 				<td colspan="2">
 					<input type="submit" value="등록">
-					<input type="button" value="조회" onclick=location.href="/JSPProject/MemberSelectController">
+					<input type="button" value="조회" onclick=location.href="/JSPProject/MemberController?flag=r">
 				</td>
 			</tr>
 		</table>

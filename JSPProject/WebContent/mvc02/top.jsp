@@ -18,7 +18,7 @@
 	<nav>
 		<div id=index>
 			<a href=/JSPProject/mvc02/member_form.jsp>회원등록</a>&emsp;&emsp;
-			<a href=/JSPProject/MemberSelectController>회원목록 조회/수정</a>&emsp;&emsp;	
+			<a href=/JSPProject/MemberController?flag=r>회원목록 조회/수정</a>&emsp;&emsp;	
 			<a href=/JSPProject/mvc02/index.jsp>홈으로</a>	
 		</div>
 	</nav> 

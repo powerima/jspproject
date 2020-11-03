@@ -19,20 +19,21 @@
 		</tr>
 		<c:forEach var='m' items="${list }">
 			<tr align="center">
-				<td><a href="/JSPProject/MemberEditController?custno=${m.custno }"
+				<td><a href="/JSPProject/MemberController?custno=${m.custno }&flag=e"
 					>${m.custno }</a></td>
 				<td>${m.custname }</td>
 				<td>${m.phone }</td>
 				<td align="left">${m.address }</td>
 				<td>${m.joindate }</td>
 				<td>${m.grade }</td>
-				<td><a href="/JSPProject/MemberDeleteController?custno=${m.custno}"
+				<td><a href="/JSPProject/MemberController?custno=${m.custno}&flag=d"
 						>${m.city }</a></td>
 			</tr>
 		</c:forEach>
 	</table>
 	<div align="center">
-		<form name="listsearch" method="post" action="/JSPProject/MemberSelectController">
+		<form name="listsearch" method="post" action="/JSPProject/MemberController">
+			<input type="hidden" name="flag" value="r">
 			<select name="ch1">
 				<option value="custno">번호</option>
 				<option value="custname">이름</option>
