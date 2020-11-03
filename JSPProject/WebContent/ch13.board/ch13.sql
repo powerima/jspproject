@@ -21,3 +21,9 @@ insert into board(writer, email, subject, passwd,
  value(s_board.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?);
  
  select * from board;
+ 
+ select rownum , P.* 
+	from ( select rownum as rnum, K.* 
+	from (select * from guest order by custname desc ) K
+	where rownum <=? ) where rnum >= ?;
+			
