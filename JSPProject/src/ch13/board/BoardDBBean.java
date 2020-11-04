@@ -39,6 +39,8 @@ public class BoardDBBean {
 		String sql = "";
 		
 		try {
+			
+			// 글번호
 			conn = getConnection();
 			
 			pstmt = conn.prepareStatement("select max(num) from board");
@@ -49,6 +51,7 @@ public class BoardDBBean {
 			} else {
 				number = 1;
 			}
+			
 			
 			if(num != 0) {
 				sql = "update board set re_step=re_step+1 ";
@@ -61,7 +64,7 @@ public class BoardDBBean {
 				re_step = re_step + 1;
 				re_level = re_level + 1;
 				
-			} else {
+			} else {	
 				ref = number;
 				re_step = 0;
 				re_level = 0;
@@ -69,9 +72,10 @@ public class BoardDBBean {
 			
 			
 			// 쿼리를 작성
-			sql = "insert into board(writer, email, subject,";
+			sql = "insert into board(num, writer, email, subject,";
 			sql += "passwd, reg_date, ref, re_step, re_level,";
-			sql += "content, ip) values(?,?,?,?,?,?,?,?,?,?)";
+			sql += "content, ip, readcount) ";
+			sql += "values(s_board.nextval,?,?,?,?,?,?,?,?,?,?,0)";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, article.getWriter());
@@ -136,15 +140,15 @@ public class BoardDBBean {
 			
 			conn = getConnection();
 			
-			String sql = "select rownum , P.* "
-					+ "from ( select rownum as rnum, K.* "
-					+ "from (select * "
-					+ "from guest order by custname desc ) K "
-					+ "where rownum <=? ) where rnum >= ? ";
+			String sql = "select rownum , p.* from "
+					+ "( select rownum as rnum, k.* from "
+					+ "(select * from board order by "
+					+ "ref desc, re_step asc) k "
+					+ "where rownum <=? ) p where rnum >= ? ";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, end);
-			pstmt.setInt(2, start-1);
+			pstmt.setInt(2, start);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -201,6 +205,8 @@ public class BoardDBBean {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
+				article = new BoardDataBean();
+				
 				article.setNum(rs.getInt("num"));
 				article.setWriter(rs.getString("writer"));
 				article.setEmail(rs.getString("email"));
@@ -243,6 +249,7 @@ public class BoardDBBean {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
+				article = new BoardDataBean();
 				article.setNum(rs.getInt("num"));
 				article.setWriter(rs.getString("writer"));
 				article.setEmail(rs.getString("email"));

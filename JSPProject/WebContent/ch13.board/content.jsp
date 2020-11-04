@@ -18,7 +18,7 @@
 	String pageNum = request.getParameter("pageNum");
 	
 	SimpleDateFormat sdf = 
-			new SimpleDateFormat("yyyy-MMdd HH:mm");
+			new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	
 	try{
 		BoardDBBean dbPro = BoardDBBean.getInstance();
@@ -64,8 +64,12 @@
 				article.getNum()%>&pageNum=<%=pageNum%>'">
 				&nbsp;&nbsp;&nbsp;&nbsp;
 			<input type="button" value="글삭제"
+			onclick="document.location.href='deleteForm.jsp?num=<%=
+				article.getNum() %>&pageNum=<%=pageNum %>'">
+				&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="button" value="댓글쓰기"
 			onclick="document.location.href='writeForm.jsp?num=<%=
-				num %>&ref=<%=ref %>&re_step=<%=re_step %>?re_level=<%=re_level %>'">
+				num %>&ref=<%=ref %>&re_step=<%=re_step %>&re_level=<%=re_level %>'">
 				&nbsp;&nbsp;&nbsp;&nbsp;
 			<input type="button" value="글목록"
 			onclick="document.location.href='list.jsp?pageNum=<%=pageNum %>'">

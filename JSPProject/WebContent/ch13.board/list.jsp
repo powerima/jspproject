@@ -29,7 +29,7 @@
  	count = dbPro.getArticleCount();
  	
  	if(count > 0){
- 		articleList = dbPro.getArticles(startRow, pageSize);
+ 		articleList = dbPro.getArticles(startRow, endRow);
  	}
  	
  	number = count-(currentPage-1)*pageSize;
@@ -37,6 +37,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="style.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
 <title>게시판</title>
 </head>

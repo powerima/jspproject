@@ -16,14 +16,14 @@ create sequence s_board
 	start with 1
 	increment by 1;
 	
-insert into board(writer, email, subject, passwd, 
+insert into board(num, writer, email, subject, passwd, 
  reg_date, ref, re_step, re_level, content, ip) 
- value(s_board.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+ value(s_board.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
  
  select * from board;
  
- select rownum , P.* 
-	from ( select rownum as rnum, K.* 
-	from (select * from guest order by custname desc ) K
-	where rownum <=? ) where rnum >= ?;
+select rownum, p.* from 
+    (select rownum as rnum, k.* from 
+    (select * from board order by ref desc, re_step asc) k 
+    where rownum <= 100	)p  where rnum >= 1;
 			

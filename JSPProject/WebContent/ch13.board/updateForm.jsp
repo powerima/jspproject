@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>게시판</title>
+<link href="style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="script.js"></script>
 </head>
 <body bgcolor="<%=bodyback_c%>">
@@ -54,7 +55,7 @@
 			<td width="70" bgcolor="<%=value_c %>"
 				align="center">내용</td>
 			<td align="left" width="330">
-				<textarea name="content" rows="13 cols="40
+				<textarea name="content" rows="13" cols="40"
 				style="ime-mode:active;"><%=
 				article.getContent()%></textarea>
 		</tr>
