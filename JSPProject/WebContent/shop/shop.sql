@@ -71,6 +71,15 @@ order by m.custno;
 
 
 
+-- 파일 업로드기능 product table
+create table product(
+	pcode number(6) not null primary key,
+	pname nvarchar2(20),
+	pimg varchar2(50),
+	petc nvarchar2(100),
+	pdate date );
+
+insert into product (pcode, pname, pimg, petc, pdate) values(?,?,?,?,?);
 	
 	
 -- 페이지 나누기

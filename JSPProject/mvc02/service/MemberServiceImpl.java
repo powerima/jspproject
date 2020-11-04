@@ -3,6 +3,7 @@ package service;
 import java.util.List;
 
 import dao.*;
+import dto.MemberMoneyVo;
 import dto.MemberVo;
 
 public class MemberServiceImpl implements MemberService{
@@ -29,5 +30,9 @@ public class MemberServiceImpl implements MemberService{
 	
 	public List<MemberVo> selectAll(MemberVo m) {
 		return dao.selectAll(m);
+	}
+	
+	public List<MemberMoneyVo> memberMoneyAll() {
+		return dao.memberMoneyAll();
 	}
 }

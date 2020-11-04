@@ -55,5 +55,19 @@ insert into money_tbl_mvc02 values (100004, 20160010, 3000, 1, 3000, 'A007','201
 
 select * from money_tbl_mvc02;
 
+select m.custno, custname, grade, sum(pcost*amount) as sales 
+		from member_tbl_02 m join money_tbl_02 n on m.custno = n.custno 
+		group by m.custno, custname, grade order by sum(pcost*amount) desc;
 
 
+		
+		
+-- 파일 업로드기능 product table
+create table product(
+	pcode number(6) not null primary key,
+	pname nvarchar2(20),
+	pimg varchar2(50),
+	petc nvarchar2(100),
+	pdate date );
+
+insert into product (pcode, pname, pimg, petc, pdate) values(?,?,?,?,?);

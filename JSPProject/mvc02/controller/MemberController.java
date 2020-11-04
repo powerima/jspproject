@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dto.MemberMoneyVo;
 import dto.MemberVo;
 import service.MemberService;
 import service.MemberServiceImpl;
@@ -54,7 +55,7 @@ public class MemberController extends HttpServlet {
 		String joindate = request.getParameter("joindate");
 		String grade = request.getParameter("grade");
 		String city = request.getParameter("city");
-		
+		String nexturl = "";
 		
 		// select - member_list.jsp
 		if(flag.equals("r")) {	
@@ -68,10 +69,7 @@ public class MemberController extends HttpServlet {
 			List<MemberVo> list = (ArrayList<MemberVo>)ms.selectAll(m);
 			request.setAttribute("list", list);
 			
-			RequestDispatcher dispatcher = 
-							request.getRequestDispatcher("mvc02/member_list_jstl.jsp");
-			dispatcher.forward(request, response);
-			
+			nexturl = "mvc02/member_list_jstl.jsp";
 			
 		}
 		
@@ -90,9 +88,7 @@ public class MemberController extends HttpServlet {
 			
 			ms.update(m);
 			
-			RequestDispatcher dispatcher
-						= request.getRequestDispatcher("MemberController?flag=r");
-			dispatcher.forward(request, response);		
+			nexturl = "MemberController?flag=r";
 		}
 		
 		
@@ -104,9 +100,7 @@ public class MemberController extends HttpServlet {
 			
 			ms.delete(m);
 			
-			RequestDispatcher dispatcher
-						= request.getRequestDispatcher("MemberController?flag=r");
-			dispatcher.forward(request, response);
+			nexturl = "MemberController?flag=r";
 			
 		} 
 		
@@ -123,9 +117,7 @@ public class MemberController extends HttpServlet {
 			m.setCity(city);
 			ms.insert(m);
 			
-			RequestDispatcher dispatcher 
-						= request.getRequestDispatcher("MemberController?flag=r");
-			dispatcher.forward(request, response);		
+			nexturl = "MemberController?flag=r";
 			
 		}
 		
@@ -135,11 +127,23 @@ public class MemberController extends HttpServlet {
 			
 			request.setAttribute("m", m);
 			
-			RequestDispatcher dispatcher
-						= request.getRequestDispatcher("mvc02/member_edit.jsp");
-			dispatcher.forward(request, response);		
+			nexturl = "mvc02/member_edit.jsp";
 		}
+		
+		// select - money_list_jstl.jsp
+		else if(flag.equals("m")) {
+			MemberMoneyVo m = new MemberMoneyVo();
+			List<MemberMoneyVo> list;
 			
+			list = ms.memberMoneyAll();
+			request.setAttribute("list", list);
+			
+			nexturl = "mvc02/money_list_jstl.jsp";
+		}
+
+		RequestDispatcher dispatcher =
+				request.getRequestDispatcher(nexturl);
+		dispatcher.forward(request, response);
 	}
 
 	/**

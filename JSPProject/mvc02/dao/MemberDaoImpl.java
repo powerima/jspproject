@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.*;
 
 import conn.DBConn;
-import dto.MemberVo;
+import dto.*;
 
 public class MemberDaoImpl implements MemberDao{
 	private DBConn db;
@@ -19,7 +19,7 @@ public class MemberDaoImpl implements MemberDao{
 	}
 	
 	
-	// MemberDeleteController, member_list_jstl.jsp 에서 사용
+	// MemberController, member_list_jstl.jsp 에서 사용
 	public void delete(MemberVo m) {
 		try {			
 			sql = "delete from member_tbl_mvc02 where custno = ?";
@@ -39,7 +39,7 @@ public class MemberDaoImpl implements MemberDao{
 	}
 	
 	
-	// MemberEditController, member_edit.jsp 에서 사용
+	// MemberController, member_edit.jsp 에서 사용
 	public MemberVo edit(int custno) {
 		MemberVo m = null;
 		try {
@@ -70,7 +70,7 @@ public class MemberDaoImpl implements MemberDao{
 	}	
 	
 	
-	// MemberFormController, member_form.jsp 에서 사용
+	// MemberController, member_form.jsp 에서 사용
 	public void insert(MemberVo m) {
 		try {
 			conn = db.getConnection();
@@ -101,7 +101,7 @@ public class MemberDaoImpl implements MemberDao{
 	}
 	
 	
-	// MemberSelectController, member_list_jstl.jsp 에서 사용
+	// MemberController, member_list_jstl.jsp 에서 사용
 	public List<MemberVo> selectAll(MemberVo m){
 		String ch1 = m.getCh1();
 		String ch2 = m.getCh2();
@@ -142,7 +142,7 @@ public class MemberDaoImpl implements MemberDao{
 	}
 	
 	
-	// MemberUpdateController, member_edit.jsp 에서 사용
+	// MemberController, member_edit.jsp 에서 사용
 	public void update(MemberVo m) {
 		try {
 			sql = "update member_tbl_mvc02 set custname = ?, phone = ?, address = ?, joindate = ?, grade = ?, city = ? where custno = ?";			
@@ -162,5 +162,42 @@ public class MemberDaoImpl implements MemberDao{
 			if(pstmt != null) try { pstmt.close(); }catch(Exception ex) {}
 			if(conn != null) try { conn.close(); }catch(Exception ex) {}
 		}
+	}
+	
+	// money_list_jstl.jsp 에서 사용
+	public List<MemberMoneyVo> memberMoneyAll(){
+		List<MemberMoneyVo> list = null;
+		
+		try {
+			MemberMoneyVo m = new MemberMoneyVo();
+			
+			sql = "select m.custno, custname, grade, ";
+			sql += "sum(pcost*amount) as pricesum from ";
+			sql += "member_tbl_mvc02 m join  money_tbl_mvc02 n ";
+			sql += "on m.custno = n.custno group by m.custno, ";
+			sql += "custname, grade order by sum(pcost*amount) desc";
+			
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			list = new ArrayList<MemberMoneyVo>();
+			while(rs.next()) {
+				m = new MemberMoneyVo();
+				m.setCustno(rs.getInt("custno"));
+				m.setCustname(rs.getString("custname"));
+				m.setGrade(rs.getString("grade"));
+				m.setPricesum(rs.getInt("pricesum"));
+				
+				list.add(m);
+			}
+
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(rs != null) try { rs.close(); }catch(Exception ex) {}
+			if(pstmt != null) try { pstmt.close(); }catch(Exception ex) {}
+			if(conn != null) try { conn.close(); }catch(Exception ex) {}
+		}
+		return list;
 	}
 }

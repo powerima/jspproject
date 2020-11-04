@@ -2,7 +2,7 @@ package dao;
 
 import java.util.List;
 
-import dto.MemberVo;
+import dto.*;
 
 public interface MemberDao {
 	public void insert(MemberVo m);
@@ -10,4 +10,5 @@ public interface MemberDao {
 	public void update(MemberVo m);
 	public MemberVo edit(int custno);
 	public List<MemberVo> selectAll(MemberVo m);	
+	public List<MemberMoneyVo> memberMoneyAll();
 }

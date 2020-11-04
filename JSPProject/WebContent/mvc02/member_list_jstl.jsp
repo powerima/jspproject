@@ -8,7 +8,7 @@
 		<h3>회원목록 조회/수정</h3>
 	</div>
 	<table border="1" align="center" width="700">
-		<tr align="center">
+		<tr align="center" style="font-weight:bold">
 			<td>회원번호</td>
 			<td>회원성명</td>
 			<td>전화번호</td>

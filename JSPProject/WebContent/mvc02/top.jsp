@@ -17,9 +17,12 @@
 	</header>
 	<nav>
 		<div id=index>
-			<a href=/JSPProject/mvc02/member_form.jsp>회원등록</a>&emsp;&emsp;
-			<a href=/JSPProject/MemberController?flag=r>회원목록 조회/수정</a>&emsp;&emsp;	
-			<a href=/JSPProject/mvc02/index.jsp>홈으로</a>	
+			<a href="/JSPProject/mvc02/member_form.jsp">회원등록</a>&emsp;&emsp;
+			<a href="/JSPProject/MemberController?flag=r">회원목록 조회/수정</a>&emsp;&emsp;
+			<a href="/JSPProject/MemberController?flag=m">회원 매출 조회</a>&emsp;&emsp;
+			<a href="/JSPProject/mvc02/product_form.jsp">상품등록</a>&emsp;&emsp;
+			<a href="/JSPProject/ProductController?flag=ps">상품목록</a>&emsp;&emsp;
+			<a href="/JSPProject/mvc02/index.jsp">홈으로</a>	
 		</div>
 	</nav> 
 
