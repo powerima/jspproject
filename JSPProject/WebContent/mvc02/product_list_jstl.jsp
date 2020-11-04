@@ -7,6 +7,7 @@
 	<div id="title">
 		<h3>쇼핑몰 상품 목록/수정</h3>
 	</div>
+	<div align="center">전체 상품수: ${count }</div>
 	<table border="1" align="center" width="600">
 		<tr align="center">
 			<td>상품코드</td>
@@ -17,9 +18,10 @@
 		<c:forEach var="p" items="${list }">
 			<tr align="center">
 				<td>${p.pcode }</td>
-				<td>${p.pname }</td>
+				<td><a href="/JSPProject/ProductController?flag=pd&pcode=${
+					p.pcode }">${p.pname }</a></td>
 				<td>${p.pdate }</td>
-				<td><img src="/JSPProject/mvc02/file/${p.pimg }" height="40"/></td>
+				<td><img src="/JSPProject/file/${p.pimg }" height="40"/></td>
 			</tr>
 		</c:forEach>
 	</table>

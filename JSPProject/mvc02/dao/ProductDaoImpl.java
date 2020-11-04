@@ -18,6 +18,60 @@ public class ProductDaoImpl implements ProductDao {
 		conn = db.getConnection();
 	}
 	
+	
+	// select count
+	public int productCount() {
+		int count = 0;
+		
+		try {
+			sql = "select count(pcode) from product";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(rs != null) try { rs.close(); } catch(Exception ex) {}
+			if(pstmt != null) try { pstmt.close(); } catch(Exception ex) {}
+			if(conn != null) try { conn.close(); } catch(Exception ex) {}
+		}
+		return count;
+	}
+	
+	// select
+	public ProductVo productSelect(String pcode) {
+		ProductVo p = null;
+		
+		try {
+			sql = "select * from product where pcode=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, pcode);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				p = new ProductVo();				
+				p.setPcode(rs.getString("pcode"));
+				p.setPname(rs.getString("pname"));
+				p.setPetc(rs.getString("petc"));
+				p.setPimg(rs.getString("pimg"));
+				p.setPdate(rs.getString("pdate"));
+			}
+			
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(rs != null) try { rs.close(); }catch(Exception ex) {}
+			if(pstmt != null) try { pstmt.close(); }catch(Exception ex) {}
+			if(conn != null) try { conn.close(); }catch(Exception ex) {}
+		}
+		return p;		
+	}
+	
+	// insert - product_form.jsp
 	public void productInsert(ProductVo p) {
 		try {
 			
@@ -41,6 +95,24 @@ public class ProductDaoImpl implements ProductDao {
 	
 	}
 	
+	// delete - product_delete.jsp
+	public void productDelete(ProductVo p) {
+		try {
+			sql = "delete from product where pcode = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, p.getPcode());
+			pstmt.executeUpdate();
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(pstmt != null) try { pstmt.close(); }catch(Exception ex) {}
+			if(conn != null) try { conn.close(); }catch(Exception ex) {}
+		}
+	}
+	
+	// select - product_list_jstl.jsp
 	public List<ProductVo> productSelectAll(){
 		List<ProductVo> list = null;
 		ProductVo p = null;

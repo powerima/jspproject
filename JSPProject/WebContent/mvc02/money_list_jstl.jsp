@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ include file="top.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <section>
 	<div id=title>
@@ -18,7 +20,16 @@
 			<tr align="center">
 				<td>${m.custno }</td>
 				<td>${m.custname }</td>
-				<td>${m.grade }</td>
+				<td>
+					<c:choose>
+						<c:when test="${m.grade eq 'A' }">
+							VIP	</c:when>
+						<c:when test="${m.grade eq 'B' }">
+							일반	</c:when>
+						<c:when test="${m.grade eq 'C' }">
+							직원 </c:when>
+					</c:choose>
+				</td>
 				<td>${m.pricesum }</td>
 			</tr>
 		</c:forEach>

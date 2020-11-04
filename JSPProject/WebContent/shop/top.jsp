@@ -19,7 +19,7 @@
 <body>
 <div id=whole>
 	<header>
-		<h2>쇼핑몰 회원관리</h2>
+		<a class="head" href="index.jsp"><h2>쇼핑몰 회원관리</h2></a>
 		<div id="login" align="right">
 	<%	if(sid.equals("")){ %>
 		

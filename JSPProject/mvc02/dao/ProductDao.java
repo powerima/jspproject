@@ -5,6 +5,9 @@ import java.util.List;
 import dto.ProductVo;
 
 public interface ProductDao {
+	public int productCount();
 	public void productInsert(ProductVo p);
-	public List<ProductVo> productSelectAll();
+	public void productDelete(ProductVo p);
+	public ProductVo productSelect(String pcode);
+	public List<ProductVo> productSelectAll();	
 }

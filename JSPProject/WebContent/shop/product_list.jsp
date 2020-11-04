@@ -33,7 +33,7 @@
 				<%=rs.getString("pcode") %></a></td>
 			<td><%=rs.getString("pname") %></td>
 			<td><%=rs.getString("pdate") %></td>
-			<td><img src='file/<%=rs.getString("pimg")%>'
+			<td><img src='/JSPProject/file/<%=rs.getString("pimg")%>'
 				height=40 /></td>
 		</tr>
 	<% } %>

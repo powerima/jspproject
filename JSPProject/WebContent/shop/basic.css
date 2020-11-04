@@ -4,18 +4,14 @@ body{
 }
 header{
 	padding-top:1px;
-	color:while;	
 	background:dodgerblue;
 	text-align:center;
-	color:LightCyan;
-	
 }
 nav{
 	padding-top:10px;
 	padding-left:30px;
 	font-size: 14px;
 	height:30px;	
-	color:black;
 	background:lightblue;
 }
 section{	
@@ -39,19 +35,12 @@ footer{
 	text-align:center;	
 }
 
-A:link{
-	color:#555555;
-	text-decoration:none;
-}
-A:visited{
-	color: #555555;
-	text-decoration:none;
-}
-A:active{
-	color: #555555;
-	text-decoration:none;
-}
-A:hover{
-	color: #000000;
-	text-decoration:underline;
-}
+.head:link{ color:lightcyan; text-decoration:none;}
+.head:visited{ color:lightcyan; text-decoration:none;}
+.head:active{ color:lightcyan; text-decoration:none;}
+.head:hover{ color:lightcyan; text-decoration:none;}
+
+A:link{ color:#555555; text-decoration:none;}
+A:visited{ color: #555555; text-decoration:none;}
+A:active{ color: #555555; text-decoration:none;}
+A:hover{ color: #000000; text-decoration:underline;}

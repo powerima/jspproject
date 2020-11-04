@@ -9,7 +9,7 @@
 	MultipartRequest multi = null;
 	
 	String realFolder = "";	// 웹어플리케이션상 절대 경로
-	String saveFolder = "shop/file";	
+	String saveFolder = "file";	
 	String encType = "utf-8";	// 엔코딩타입
 	int maxSize = 5*1024*1024;	//5Mb
 	
