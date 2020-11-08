@@ -19,7 +19,6 @@ create table manager_tbl_ch14(
 insert into manager_tbl_ch14(managerId, managerPasswd)
 values('bookmaster@shop.com', '1234');
 
-
 create table book_tbl_ch14(
 	book_id number(12) not null primary key,
 	book_kind varchar2(3) not null,
@@ -27,7 +26,7 @@ create table book_tbl_ch14(
 	book_price int not null,
 	book_count number(6) not null,
 	author nvarchar2(40) not null,
-	publishing_com nvarchar2(3) not null,
+	publishing_com nvarchar2(20) not null,
 	publishing_date varchar2(15) not null,
 	book_image nvarchar2(16) default 'nothing.jpg',
 	book_content long not null,
@@ -38,6 +37,15 @@ create sequence sbook_id_book_tbl_ch14
 	start with 100001
 	increment by 1;
 	
+select * from book_tbl_ch14
+delete from book_tbl_ch14
+	 
+select rownum, p.* from 
+    (select rownum as rnum, k.* from 
+    (select * from board order by ref desc, re_step asc) k 
+    where rownum <= 100	)p  where rnum >= 1;
+    
+    
 	
 drop table bank_tbl_ch14;
 create table bank_tbl_ch14(

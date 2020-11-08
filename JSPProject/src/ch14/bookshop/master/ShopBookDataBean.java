@@ -1,4 +1,4 @@
-package ch14.shop;
+package ch14.bookshop.master;
 
 import java.sql.Timestamp;
 
@@ -86,6 +86,14 @@ public class ShopBookDataBean {
 	}
 	public void setReg_date(Timestamp reg_date) {
 		this.reg_date = reg_date;
+	}
+	@Override
+	public String toString() {
+		return "ShopBookDataBean [book_id=" + book_id + ", book_kind=" + book_kind + ", book_title=" + book_title
+				+ ", book_price=" + book_price + ", book_count=" + book_count + ", author=" + author
+				+ ", publishing_com=" + publishing_com + ", publishing_date=" + publishing_date + ", book_image="
+				+ book_image + ", book_content=" + book_content + ", discount_rate=" + discount_rate + ", reg_date="
+				+ reg_date + "]";
 	}
 	
 	
