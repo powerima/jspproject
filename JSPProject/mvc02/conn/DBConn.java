@@ -23,18 +23,15 @@ public class DBConn {
 		return db;
 	}
 	
-	public Connection getConnection() {
+	public Connection getConnection() throws Exception  {
 		Connection conn = null;
 		
-		try {
-			Context initCtx = new InitialContext();
-			Context envCtx = (Context)initCtx.lookup("java:comp/env");
-			DataSource ds = (DataSource)envCtx.lookup("jdbc/orcl");
-			conn = ds.getConnection();
-		}catch(Exception ex) {
-			ex.printStackTrace();
-		}
-		
+		Context initCtx = new InitialContext();
+		Context envCtx = (Context)initCtx.lookup("java:comp/env");
+		DataSource ds = (DataSource)envCtx.lookup("jdbc/orcl");
+		conn = ds.getConnection();
+	
+	
 		return conn;
 	}
 }

@@ -12,8 +12,8 @@ public class GuestServiceImpl implements GuestService{
 		dao = new GuestDaoImpl();
 	}
 	
-	public List<GuestVo> selectAll(int startRow, int endRow) {
-		return dao.selectAll(startRow, endRow);
+	public List<GuestVo> selectAll(int startRow, int endRow, GuestVo g) {
+		return dao.selectAll(startRow, endRow, g);
 	}
 	
 	public int getCount() {

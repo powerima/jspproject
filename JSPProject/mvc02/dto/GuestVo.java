@@ -6,8 +6,11 @@ public class GuestVo {
 	private String phone;
 	private String address;
 	private String joindate;
+	private String ch1;
+	private String ch2;
 	private int rownum;
 	private int rnum;
+	
 	
 	public int getCustno() {
 		return custno;
@@ -51,4 +54,17 @@ public class GuestVo {
 	public void setRnum(int rnum) {
 		this.rnum = rnum;
 	}
+	public String getCh1() {
+		return ch1;
+	}
+	public void setCh1(String ch1) {
+		this.ch1 = ch1;
+	}
+	public String getCh2() {
+		return ch2;
+	}
+	public void setCh2(String ch2) {
+		this.ch2 = ch2;
+	}
+	
 }

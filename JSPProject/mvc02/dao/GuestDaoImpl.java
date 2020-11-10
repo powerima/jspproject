@@ -17,23 +17,41 @@ public class GuestDaoImpl implements GuestDao{
 		db = DBConn.getInstance();
 	}
 	
-	public List<GuestVo> selectAll(int startRow, int endRow){
+	public List<GuestVo> selectAll(int startRow, int endRow, GuestVo g){
 		List<GuestVo> list = null;
 		
 		try {
-			GuestVo g = null;
-			
+			String ch2 = g.getCh2();
 			conn = db.getConnection();
-			sql = "select rownum, p.* " +
-					"from (select rownum as rnum, k.* " +
-					"from (select custno, custname, phone, address, " +
-					"to_char(joindate, 'yyyy-mm-dd') as joindate " +
-					"from guest order by custname desc) k "+
-					"where rownum <= ?	)p " +
-					"where rnum >= ?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, endRow);
-			pstmt.setInt(2, startRow);
+			
+			if(ch2 == null) {				
+				sql = "select rownum, p.* " +
+						"from (select rownum as rnum, k.* " +
+						"from (select * from guest " +
+						"order by custname desc) k "+
+						"where rownum <= ?	)p " +
+						"where rnum >= ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, endRow);
+				pstmt.setInt(2, startRow);
+				
+			}  else {
+				String ch1 = g.getCh1();
+				sql = "select rownum, p.* " +
+						"from (select rownum as rnum, k.* " +
+						"from (select * from guest " +
+						"where " + ch1 + " like '%'||?||'%' " +
+						"order by custname desc) k "+
+						"where rownum <= ?	)p " +
+						"where rnum >= ?";
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, g.getCh2());
+				pstmt.setInt(3, endRow);
+				pstmt.setInt(4, startRow);
+			}
+			
+				
 			rs = pstmt.executeQuery();
 			
 			list = new ArrayList<GuestVo>();
@@ -45,7 +63,7 @@ public class GuestDaoImpl implements GuestDao{
 				g.setCustname(rs.getString("custname"));
 				g.setPhone(rs.getString("phone"));
 				g.setAddress(rs.getString("address"));
-				g.setJoindate(rs.getString("joindate"));
+				g.setJoindate(rs.getString("joindate").substring(0, 10));
 				g.setRownum(rs.getInt("rownum"));
 				g.setRnum(rs.getInt("rnum"));
 		

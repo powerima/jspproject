@@ -51,15 +51,21 @@
 			<a href="<%=path %>/GuestController?pageNum=${i}">[${i }]</a>
 			</c:if>
 		</c:forEach>
-		<c:if test="${endPage < pageCount }">
-			<c:if test="${endPage + pageBlock < pageCount }">
-				<a href="<%=path %>/GuestController?pageNum=${endPage+pageBlock}">[다음 10개]</a>
-			</c:if>
-			<c:if test="${endPage + pageBlock >= pageCount }">
-				<a href="<%=path %>/GuestController?pageNum=${pageCount}">[다음 10개]</a>
-			</c:if>
-		</c:if>
-		
+		<c:if test="${endPage < pageCount }">						
+			<a href="<%=path %>/GuestController?pageNum=${endPage+1}">[다음 10개]</a>			
+		</c:if>		
 	</div>
+	<div align="center">
+		<form name="listsearch" method="post" action="/JSPProject/GuestController">
+			<input type="hidden" name="flag" value="r">
+			<select name="ch1">
+				<option value="custno">번호</option>
+				<option value="custname">이름</option>
+			</select>
+			<input type="text" name="ch2">
+			<input type="submit" value="검색">		
+		</form>
+	</div>
+	
 </section>
 <%@ include file="bottom.jsp" %>

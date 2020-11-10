@@ -14,8 +14,7 @@ public class ProductDaoImpl implements ProductDao {
 	private String sql;
 	
 	public ProductDaoImpl() {
-		db = DBConn.getInstance();
-		conn = db.getConnection();
+		db = DBConn.getInstance();		
 	}
 	
 	
@@ -24,6 +23,8 @@ public class ProductDaoImpl implements ProductDao {
 		int count = 0;
 		
 		try {
+			conn = db.getConnection();
+			
 			sql = "select count(pcode) from product";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -45,7 +46,10 @@ public class ProductDaoImpl implements ProductDao {
 		ProductVo p = null;
 		
 		try {
+			conn = db.getConnection();
+			
 			sql = "select * from product where pcode=?";
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, pcode);
 			
@@ -74,6 +78,7 @@ public class ProductDaoImpl implements ProductDao {
 	// insert - product_form.jsp
 	public void productInsert(ProductVo p) {
 		try {
+			conn = db.getConnection();
 			
 			sql = "insert into product (pcode, pname, pimg, petc, pdate) " +
 				" values(?,?,?,?,?)";
@@ -98,6 +103,8 @@ public class ProductDaoImpl implements ProductDao {
 	// delete - product_delete.jsp
 	public void productDelete(ProductVo p) {
 		try {
+			conn = db.getConnection();
+			
 			sql = "delete from product where pcode = ?";
 			
 			pstmt = conn.prepareStatement(sql);
@@ -118,6 +125,8 @@ public class ProductDaoImpl implements ProductDao {
 		ProductVo p = null;
 		
 		try {
+			conn = db.getConnection();
+			
 			sql = "select * from product";
 			
 			pstmt = conn.prepareStatement(sql);

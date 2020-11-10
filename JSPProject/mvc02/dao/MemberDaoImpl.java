@@ -14,14 +14,14 @@ public class MemberDaoImpl implements MemberDao{
 	private String sql;	
 	
 	public MemberDaoImpl() {
-		db = DBConn.getInstance();
-		conn = db.getConnection();
+		db = DBConn.getInstance();		
 	}
 	
 	
 	// MemberController, member_list_jstl.jsp 에서 사용
 	public void delete(MemberVo m) {
 		try {			
+			conn = db.getConnection();
 			sql = "delete from member_tbl_mvc02 where custno = ?";
 			
 			pstmt = conn.prepareStatement(sql);
@@ -43,6 +43,8 @@ public class MemberDaoImpl implements MemberDao{
 	public MemberVo edit(int custno) {
 		MemberVo m = null;
 		try {
+			conn = db.getConnection();
+			
 			sql = "select * from member_tbl_mvc02 where custno = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, custno);
@@ -107,6 +109,8 @@ public class MemberDaoImpl implements MemberDao{
 		List<MemberVo> list = null;
 		
 		try {
+			conn = db.getConnection();
+			
 			if(m.getCh2() == null) {				
 				sql = "select * from member_tbl_mvc02";
 				pstmt = conn.prepareStatement(sql);
@@ -143,6 +147,8 @@ public class MemberDaoImpl implements MemberDao{
 	// MemberController, member_edit.jsp 에서 사용
 	public void update(MemberVo m) {
 		try {
+			conn = db.getConnection();
+			
 			sql = "update member_tbl_mvc02 set custname = ?, phone = ?, address = ?, joindate = ?, grade = ?, city = ? where custno = ?";			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, m.getCustname());
@@ -167,6 +173,8 @@ public class MemberDaoImpl implements MemberDao{
 		List<MemberMoneyVo> list = null;
 		
 		try {
+			conn = db.getConnection();
+			
 			MemberMoneyVo m = new MemberMoneyVo();
 			
 			sql = "select m.custno, custname, grade, ";

@@ -45,7 +45,7 @@ public class GuestController extends HttpServlet {
 		
 		
 		
-		
+		// 페이지 나누기에 필요한 내용들
 		int pageSize = 10;
 		int startRow = (pageNum - 1) * pageSize + 1;
 		int endRow = startRow + pageSize - 1;
@@ -81,7 +81,16 @@ public class GuestController extends HttpServlet {
 		System.out.println("8. 하단 가로 마지막 페이지: "+ endPage);
 		*/
 		
-		List<GuestVo> list = gs.selectAll(startRow, endRow);
+		
+		// 검색에 필요한 내용들
+		String ch1 = request.getParameter("ch1");
+		String ch2 = request.getParameter("ch2");
+		
+		GuestVo g = new GuestVo();
+		g.setCh1(ch1);
+		g.setCh2(ch2);
+		
+		List<GuestVo> list = gs.selectAll(startRow, endRow, g);
 		
 		
 		
