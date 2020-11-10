@@ -60,8 +60,29 @@ select m.custno, custname, grade, sum(pcost*amount) as sales
 		group by m.custno, custname, grade order by sum(pcost*amount) desc;
 
 
+		-- 페이지 나누기
+
+create table guest(
+	custno number(5) not null primary key,
+	custname nvarchar2(20),
+	phone varchar2(13),
+	address nvarchar2(60),
+	joindate date);
+
+
+create sequence s_guest 
+	start with 1
+	increment by 1;
+	
 		
-		
+-- 최종 쿼리문
+select rownum , P.*
+from ( select rownum as rnum, K.*
+from (select * from guest order by custname desc ) K
+where rownum <=11 ) P
+where rnum >= 1 ;    
+
+
 -- 파일 업로드기능 product table
 create table product(
 	pcode number(6) not null primary key,

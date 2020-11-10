@@ -34,7 +34,10 @@ public class GuestController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
-		
+		request.setCharacterEncoding("utf-8");
+		System.out.println(request.getParameter("ch2"));
+		String ch1 = request.getParameter("ch1");
+		String ch2 = request.getParameter("ch2");
 		
 		GuestService gs = new GuestServiceImpl();
 		int pageNum = 1;
@@ -49,8 +52,8 @@ public class GuestController extends HttpServlet {
 		int pageSize = 10;
 		int startRow = (pageNum - 1) * pageSize + 1;
 		int endRow = startRow + pageSize - 1;
-		int pageBlock = 10;
-		int count = gs.getCount();
+		int pageBlock = 10;		
+		int count = gs.getCount(new GuestVo(ch1, ch2));
 		int pageCount = count/pageSize + (count % pageSize > 0 ? 1 : 0);		
 		int startPage = 1;
 		if(pageNum % pageBlock == 0 ) {
@@ -60,14 +63,16 @@ public class GuestController extends HttpServlet {
 		}
 		
 		int endPage = startPage + pageBlock - 1;
-		endPage = pageCount > endPage ? endPage : pageCount;
-
+		endPage = (pageCount < endPage) ? pageCount : endPage;
 		request.setAttribute("pageCount", pageCount);
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("pageSize", pageSize);
 		request.setAttribute("pageBlock", pageBlock);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
+		request.setAttribute("ch1", ch1);
+		request.setAttribute("ch2", ch2);
+		
 		
 		// 페이지 나누기
 		/*
@@ -83,8 +88,7 @@ public class GuestController extends HttpServlet {
 		
 		
 		// 검색에 필요한 내용들
-		String ch1 = request.getParameter("ch1");
-		String ch2 = request.getParameter("ch2");
+
 		
 		GuestVo g = new GuestVo();
 		g.setCh1(ch1);

@@ -41,18 +41,21 @@
 	</table>
 	<div align="center">
 		<c:if test="${startPage > 1 }">
-			<a href="<%=path %>/GuestController?pageNum=${startPage - pageBlock}">[이전 10개]</a>&nbsp;&nbsp;
+			<a href="<%=path %>/GuestController?pageNum=${
+				startPage- pageBlock}&ch1=${ch1}&ch2=${ch2}">[이전 10개]</a>&nbsp;&nbsp;
 		</c:if>
 		<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1">
 			<c:if test="${i == pageNum }">
 				[${i }]
 			</c:if>
 			<c:if test="${i != pageNum }">
-			<a href="<%=path %>/GuestController?pageNum=${i}">[${i }]</a>
+			<a href="<%=path %>/GuestController?pageNum=${
+					i}&ch1=${ch1}&ch2=${ch2}">[${i }]</a>
 			</c:if>
 		</c:forEach>
 		<c:if test="${endPage < pageCount }">						
-			<a href="<%=path %>/GuestController?pageNum=${endPage+1}">[다음 10개]</a>			
+			<a href="<%=path %>/GuestController?pageNum=${
+					endPage+1}&ch1=${ch1}&ch2=${ch2}">[다음 10개]</a>			
 		</c:if>		
 	</div>
 	<div align="center">
@@ -66,6 +69,5 @@
 			<input type="submit" value="검색">		
 		</form>
 	</div>
-	
 </section>
 <%@ include file="bottom.jsp" %>

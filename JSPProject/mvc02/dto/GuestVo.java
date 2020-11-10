@@ -12,6 +12,14 @@ public class GuestVo {
 	private int rnum;
 	
 	
+	public GuestVo() {
+		
+	}
+	public GuestVo(String ch1, String ch2) {
+		super();
+		this.ch1 = ch1;
+		this.ch2 = ch2;
+	}
 	public int getCustno() {
 		return custno;
 	}

@@ -24,7 +24,7 @@ public class GuestDaoImpl implements GuestDao{
 			String ch2 = g.getCh2();
 			conn = db.getConnection();
 			
-			if(ch2 == null) {				
+			if(ch2 == null || ch2.equals("")) {				
 				sql = "select rownum, p.* " +
 						"from (select rownum as rnum, k.* " +
 						"from (select * from guest " +
@@ -47,8 +47,8 @@ public class GuestDaoImpl implements GuestDao{
 				
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, g.getCh2());
-				pstmt.setInt(3, endRow);
-				pstmt.setInt(4, startRow);
+				pstmt.setInt(2, endRow);
+				pstmt.setInt(3, startRow);
 			}
 			
 				
@@ -81,14 +81,25 @@ public class GuestDaoImpl implements GuestDao{
 		return list;
 	}
 	
-	public int getCount() {
+	public int getCount(GuestVo g) {
 		int x = 0;
 		
 		try {
 			conn = db.getConnection();
-			sql = "select count(*) from guest";
+			String ch2 = g.getCh2();
 			
-			pstmt = conn.prepareStatement(sql);
+			if(ch2 == null || ch2.equals("")) {				
+				sql = "select count(*) from guest";
+				pstmt = conn.prepareStatement(sql);
+				
+			}  else {
+				String ch1 = g.getCh1();
+				sql = "select count(*) from guest ";
+				sql += "where " + ch1 + " like '%'||?||'%' ";
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, ch2);
+			}
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				x = rs.getInt(1);
