@@ -21,6 +21,7 @@
 			<a class="nav" href="/JSPProject/MemberController?flag=m">회원 매출 조회</a>&emsp;&emsp;
 			<a class="nav" href="/JSPProject/mvc02/product_form.jsp">상품등록</a>&emsp;&emsp;
 			<a class="nav" href="/JSPProject/ProductController?flag=ps">상품목록</a>&emsp;&emsp;
+			<a class="nav" href="/JSPProject/GuestController">방문자 목록</a>&emsp;&emsp;
 			<a class="nav" href="/JSPProject/mvc02/index.jsp">홈으로</a>	
 		</div>
 	</nav> 
