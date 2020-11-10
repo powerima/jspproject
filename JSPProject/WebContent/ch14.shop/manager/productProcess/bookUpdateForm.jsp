@@ -30,7 +30,7 @@
 	<meta charset="UTF-8">
 	<title>상품 수정</title>
 	<link href="../../etc/style.css" rel="stylesheet" type="text/css">
-	<script type="text/javascript" src="../../etc/script.jsp"></script>
+	<script type="text/javascript" src="../../etc/script.js"></script>
 	</head>
 	<body bgcolor="<%=bodyback_c %>">
 	<p>책 수정</p>
@@ -126,8 +126,9 @@
 			<tr>
 				<td width="100" bgcolor="<%=value_c %>">이미지</td>
 				<td width="400" align="left">
-					<input type="file" name="book_image"><%=book.getBook_image() %></td>
-				
+					<input type="file" name="book_image"><%=book.getBook_image() %>
+					<input type="hidden" name="book_preimage"
+						value="<%=book.getBook_image() %>"></td>				
 			</tr>
 			<tr>
 				<td width="100" bgcolor="<%=value_c %>">내용</td>
@@ -143,7 +144,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" bgcolor="<%=value_c %>" align="center">
-					<input type="button" value="책수정" onclick="updateCheckForm(this.form)">
+					<input type="button" value="책수정" onclick="updateCheckForm(writeform)">
 					<input type="reset" value="다시 작성"></td> 
 			</tr>
 		</table>	

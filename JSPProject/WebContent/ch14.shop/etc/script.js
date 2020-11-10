@@ -46,7 +46,6 @@ function checkForm(writeform){
  } 
  
  function updateCheckForm(writeform){
-
 	if(!writeform.book_kind.value){
 	  alert("책의 분류를 선택하십시오");
 	  writeform.book_kind.focus();

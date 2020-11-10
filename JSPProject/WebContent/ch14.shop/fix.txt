@@ -1,6 +1,6 @@
 수정 내용
 1. bookRegisterForm.jsp 페이지 책등록 버튼 반응이 없음
-	문제 : ch14.shop/manager/productProcess/booRegisterForm.jsp 페이지에 책등록 버튼이 반응이 없는 현상 => boook_kind 이름을 오타 문제
+	문제 : ch14.shop/manager/productProcess/bookRegisterForm.jsp 페이지에 책등록 버튼이 반응이 없는 현상 => boook_kind 이름을 오타 문제
 	해결 : javascript 파일인 ch14/etc/script.js 파일에서 반응이 없던 것으로 bookRegisterForm.jsp 파일의 boook_kind 이름을 book_kind로 변경 후 잘됨
 
 
@@ -16,3 +16,6 @@
 	문제 : ch14.bookshop.master/ShopBookDBBean.java 에 sql 쿼리에서 시퀀스를 넣어 주지 않음 => 시퀀스값을 빼먹음
 	해결 : insert into book_tbl_ch14 values(sbook_id_book_tbl_ch14.nextval,?,?,?,?,?,?,?,?,?,?,?); 변경 함
 
+5. bookUpdateForm.jsp 페이지 책등록 버튼 반응이 없음
+	문제 : ch14.shop/manager/productProcess/bookUpdateForm.jsp 페이지에 책등록 버튼이 반응이 없는 현상 => 오타문제 js를 jsp라고 씀	
+	해결 : ch14.shop/manager/productProcess/bookUpdateForm.jsp 에서  src="../../etc/script.jsp" 를 src="../../etc/script.jsp" 수정

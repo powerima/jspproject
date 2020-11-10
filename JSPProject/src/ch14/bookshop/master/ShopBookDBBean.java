@@ -3,6 +3,7 @@ package ch14.bookshop.master;
 import java.sql.*;
 import java.util.*;
 
+
 public class ShopBookDBBean {
 
 	private static ShopBookDBBean instance =
@@ -77,8 +78,6 @@ public class ShopBookDBBean {
 			pstmt = conn.prepareStatement(
 					"insert into book_tbl_ch14 " +
 					"values(sbook_id_book_tbl_ch14.nextval,?,?,?,?,?,?,?,?,?,?,?)");
-			System.out.println(book);
-			
 			
 			pstmt.setString(1, book.getBook_kind());
 			pstmt.setString(2, book.getBook_title());
@@ -287,33 +286,35 @@ public class ShopBookDBBean {
 	public void updateBook(ShopBookDataBean book, int bookId) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		String sql;
 		
 		try {
 			conn = getConnection();
 			
 			sql = "update book_tbl_ch14 set book_kind = ?, book_title = ?, ";
-			sql += "book_count = ?, author = ?, publishing_com = ?, ";
-			sql += "publishing_date = ?, book_image = ?, book_content = ?, ";
-			sql += "discount_rate = ? where book_id = ?";
-			
+			sql += "book_price = ?, book_count = ?, author = ?, ";
+			sql += " publishing_com = ?, publishing_date = ?, book_image = ?, ";
+			sql += "book_content = ?, discount_rate = ? where book_id = ?";
+	
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, book.getBook_kind());
 			pstmt.setString(2, book.getBook_title());
 			pstmt.setInt(3, book.getBook_price());
 			pstmt.setInt(4, book.getBook_count());
 			pstmt.setString(5, book.getAuthor());
-			pstmt.setString(6, book.getPublishing_date());
-			pstmt.setString(7, book.getPublishing_com());
+			pstmt.setString(6, book.getPublishing_com());
+			pstmt.setString(7, book.getPublishing_date());
 			pstmt.setString(8, book.getBook_image());
 			pstmt.setString(9, book.getBook_content());
 			pstmt.setInt(10, book.getDiscount_rate());
-			pstmt.setInt(11, book.getBook_id());
+			pstmt.setInt(11, bookId);
 
 			pstmt.executeUpdate();
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}finally{
+			if(rs != null) try { rs.close(); } catch(Exception ex) {}
 			if(pstmt != null) try { pstmt.close(); } catch(Exception ex) {}
 			if(conn != null) try { conn.close(); } catch(Exception ex) {}
 		}
