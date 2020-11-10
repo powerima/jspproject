@@ -23,7 +23,7 @@ import model.Member;
 public class ListDaoImpl {
 	DBConnect db = DBConnect.getInstance();
 	
-	public List selectAll() {
+	public List<Member> selectAll() {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

@@ -103,7 +103,7 @@
 						<%=article.getWriter() %></a></td>
 				<td width="150"><%=sdf.format(article.getReg_date()) %></td>
 				<td width="50"><%=article.getReadcount() %></td>
-				<td widht="100"><%=article.getIp() %></td>
+				<td width="100"><%=article.getIp() %></td>
 		</tr>
 	<%	} %>	
 	</table>

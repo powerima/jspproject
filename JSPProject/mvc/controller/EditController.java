@@ -24,7 +24,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.EditDaoImpl;
-import model.Member;
 
 /**
  * Servlet implementation class EditController
@@ -50,10 +49,9 @@ public class EditController extends HttpServlet {
 		System.out.println("회원 정보 수정");
 		
 		String id = request.getParameter("id");
-		Member m;
 		
 		EditDaoImpl dao = new EditDaoImpl();
-		m = dao.select(id);
+		dao.select(id);
 		
 		RequestDispatcher dispatcher
 				= request.getRequestDispatcher("edit.jsp");

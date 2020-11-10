@@ -14,8 +14,6 @@
 
 package dto;
 
-import java.util.Date;
-
 
 // member_tbl_mvc02 table bean
 public class MemberVo {

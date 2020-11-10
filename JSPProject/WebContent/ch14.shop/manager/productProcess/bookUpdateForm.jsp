@@ -64,7 +64,7 @@
 			<tr>
 				<td width="100" bgcolor="<%=value_c %>">제목</td>
 				<td width="400" align="left">
-					<input type="text" size="50" maxlenght="50" name="book_title"
+					<input type="text" size="50" maxlength="50" name="book_title"
 						value="<%=book.getBook_title() %>">
 					<input type="hidden" name="book_id" value="<%=book_id %>"></td>	
 			</tr>

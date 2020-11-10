@@ -15,7 +15,7 @@
 package controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -51,7 +51,7 @@ public class ListController extends HttpServlet {
 		System.out.println("목록보기");
 		
 		ListDaoImpl dao = new ListDaoImpl();
-		ArrayList<Member> list = (ArrayList<Member>) dao.selectAll();
+		List<Member> list = dao.selectAll();
 		
 		request.setAttribute("list", list);
 		

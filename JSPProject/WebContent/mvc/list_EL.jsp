@@ -14,7 +14,7 @@
 		<h3>EL 표현식 목록보기</h3>
 	</div>
 	
-	<table border="1" ">
+	<table border="1" >
 		<tr>	
 			<td>아이디</td>
 			<td>암호</td>

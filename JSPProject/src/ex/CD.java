@@ -1,6 +1,6 @@
 package ex;
 
-import java.util.Date;
+import java.util.Calendar;
 
 public class CD {
 
@@ -62,10 +62,10 @@ public class CD {
 	}
 
 	public static String getDate(int startYear) {
-		Date d = new Date();
-		int thisYear = d.getYear() + 1900;
-		int thisMonth = d.getMonth() + 1;
-		int thisDate = d.getDate();
+		Calendar c = Calendar.getInstance();
+		int thisYear = c.get(Calendar.YEAR);
+		int thisMonth = c.get(Calendar.MONTH)+1;
+		int thisDate = c.get(Calendar.DATE);
 
 		int year = (int) (Math.random() * (thisYear - startYear) + startYear + 1);
 		int month = (int) (Math.random() * 12) + 1;
@@ -109,4 +109,6 @@ public class CD {
 
 		return str;
 	}
+	
+	
 }

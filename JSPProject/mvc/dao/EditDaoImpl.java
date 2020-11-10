@@ -14,8 +14,6 @@
 package dao;
 
 import java.sql.*;
-import java.util.List;
-
 import conn.DBConnect;
 import model.Member;
 

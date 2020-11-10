@@ -11,9 +11,8 @@
 <script src="./js/script.js"></script>
 </head>
 <body>
-<div id=whole>
 	<header>
-		<a class="head" href="/JSPProject/mvc02/index.jsp"><h2>쇼핑몰 회원관리 (MVC)</h2></a>	
+		<h2><a class="head" href="/JSPProject/mvc02/index.jsp">쇼핑몰 회원관리 (MVC)</a></h2>	
 	</header>
 	<nav>
 		<div id=index>

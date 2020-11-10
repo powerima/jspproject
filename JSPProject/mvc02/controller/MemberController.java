@@ -132,7 +132,6 @@ public class MemberController extends HttpServlet {
 		
 		// select - money_list_jstl.jsp
 		else if(flag.equals("m")) {
-			MemberMoneyVo m = new MemberMoneyVo();
 			List<MemberMoneyVo> list;
 			
 			list = ms.memberMoneyAll();

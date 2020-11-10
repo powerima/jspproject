@@ -38,7 +38,7 @@
 			<tr>
 				<td width="70" bgcolor="<%=value_c %>" align="center">이름</td>
 				<td width="330" align="left">
-					<input type="text" size="10" maxlengt="10"
+					<input type="text" size="10" maxlength="10"
 					name="writer" style="ime-mode:active;"></td><!-- active:한글 -->
 			</tr>
 			<tr>
@@ -53,7 +53,7 @@
 				}
 			%>
 				<input type="text" size="40" maxlength="50" name="subject"
-					value="<%=strV %> " stype="ime-mode:active;"></td>
+					value="<%=strV %> " style="ime-mode:active;"></td>
 			</tr>	 
 			<tr>
 				<td width="70" bgcolor="<%=value_c %>" align="center">Email</td>
@@ -71,7 +71,7 @@
 				<td width="70" bgcolor="<%=value_c %>" align="center">비밀번호</td>
 				<td width="330" align="left">
 					<input type="password" size="8" maxlength="12"
-						name="passwd" stype="ime-mode:inactive;">
+						name="passwd" style="ime-mode:inactive;">
 				</td>
 			</tr>
 			<tr>

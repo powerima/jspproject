@@ -33,7 +33,7 @@
 <table>
 	<tr height="30">
 		<td align="center" width="125" bgcolor="<%=value_c %>">글번호</td>
-		<td aling="center" width="125" align="center">
+		<td align="center" width="125" align="center">
 			<%=article.getNum() %></td>
 		<td align="center" width="125" bgcolor="<%=value_c %>">조회수</td>
 		<td align="center" width="125" align="center">

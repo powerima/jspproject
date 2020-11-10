@@ -38,7 +38,7 @@
 	</tr>
 	<tr height="30">
 		<td align="center">비밀번호:
-			<input type="password" name="passwd" size="8" maxlengt="12">
+			<input type="password" name="passwd" size="8" maxlength="12">
 			<input type="hidden" name="num" value="<%=num %>"></td>
 	</tr>
 	<tr height="30">

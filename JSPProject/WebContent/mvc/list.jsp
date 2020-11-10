@@ -4,7 +4,7 @@
 <%@ page import="model.Member" %>
 <%	
 	Member m = null;
-	ArrayList<Member> list 
+	List<Member> list 
 		= (ArrayList<Member>)request.getAttribute("list");	
 %>
 <!DOCTYPE html>

@@ -10,7 +10,9 @@
 package conn;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 
 public class DBConn {
 	private static DBConn db = new DBConn();
@@ -25,9 +27,10 @@ public class DBConn {
 		Connection conn = null;
 		
 		try {
-			Class.forName("oracle.jdbc.OracleDriver");
-			conn = DriverManager.getConnection(
-				"jdbc:oracle:thin:@//localhost:1521/xe","system","1234");
+			Context initCtx = new InitialContext();
+			Context envCtx = (Context)initCtx.lookup("java:comp/env");
+			DataSource ds = (DataSource)envCtx.lookup("jdbc/orcl");
+			conn = ds.getConnection();
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}

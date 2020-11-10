@@ -103,8 +103,6 @@ public class MemberDaoImpl implements MemberDao{
 	
 	// MemberController, member_list_jstl.jsp 에서 사용
 	public List<MemberVo> selectAll(MemberVo m){
-		String ch1 = m.getCh1();
-		String ch2 = m.getCh2();
 		
 		List<MemberVo> list = null;
 		

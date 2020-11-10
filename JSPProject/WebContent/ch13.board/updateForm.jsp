@@ -29,7 +29,7 @@
 			<td width="70" bgcolor="<%=value_c %>"
 				align="center">이름</td>
 			<td align="left" width="330">
-				<input type="text" size="10" maxlengt="10"
+				<input type="text" size="10" maxlength="10"
 				name="writer" value="<%=article.getWriter() %>"
 				style="ime-mode:active;">
 				<input type="hidden" name="num" 
@@ -39,7 +39,7 @@
 			<td width="70" bgcolor="<%=value_c %>"  
 				align="center">제목</td>
 			<td align="left" width="330">
-				<input type="text" size="40" maxlengt="50"
+				<input type="text" size="40" maxlength="50"
 				name="subject" value="<%=article.getSubject() %>"
 				style="ime-mode:active;"></td>
 		</tr>
@@ -47,7 +47,7 @@
 			<td width="70" bgcolor="<%=value_c %>"
 				align="center">Email</td>
 			<td align="left" width="330">
-				<input type="text" size="40" maxlengt="30"
+				<input type="text" size="40" maxlength="30"
 				name="email" value="<%=article.getEmail() %>"
 				style="ime-mode:inactive;"></td>
 		</tr>
