@@ -25,7 +25,7 @@
 <p>책 삭제</p>
 <br>
 <form method="post" name="delForm"
-	action="bookDeletePro.jsp?book_id<%=
+	action="bookDeletePro.jsp?book_id=<%=
 		book_id%>&book_kind=<%=book_kind%>"
 		onsubmit="return deleteSave()">
 	<table>

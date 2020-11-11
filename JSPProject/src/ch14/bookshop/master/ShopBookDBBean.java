@@ -332,7 +332,7 @@ public class ShopBookDBBean {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(
-					"delet from book_tbl_ch14 where book_id = ?");
+					"delete from book_tbl_ch14 where book_id = ?");
 			pstmt.setInt(1, bookId);
 			pstmt.executeUpdate();			
 			
