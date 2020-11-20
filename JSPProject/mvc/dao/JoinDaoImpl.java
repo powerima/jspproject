@@ -22,14 +22,13 @@ import model.Member;
 
 public class JoinDaoImpl {
 	
-	DBConnect db = DBConnect.getInstance();
 	Connection conn;
 	PreparedStatement pstmt;
 	String sql;
 	
 	public void insert(Member m) {
 		try {
-			conn = db.getConnection();
+			conn = DBConnect.getConnection();
 			sql = "insert into member_tbl_mvc values(?,?,?,?)";		
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, m.getId());
@@ -39,6 +38,8 @@ public class JoinDaoImpl {
 			pstmt.executeUpdate();
 		}catch(Exception ex) {
 			ex.printStackTrace();
+		}finally {
+			DBConnect.close(pstmt, conn);
 		}
 	}
 }

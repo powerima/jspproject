@@ -10,6 +10,9 @@
 package conn;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
@@ -33,5 +36,70 @@ public class DBConn {
 	
 	
 		return conn;
+	}
+	
+	public static void close(PreparedStatement pstmt, Connection conn) {
+		if (pstmt != null) {
+			try {
+				if (!pstmt.isClosed()) {
+					pstmt.close();
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				pstmt = null;
+			}
+		}
+		
+		if (conn != null) {
+			try {
+				if (!conn.isClosed()) {
+					conn.close();
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				conn = null;
+			}
+		}
+	}
+	
+	public static void close(
+			ResultSet rs, PreparedStatement pstmt, Connection conn) {
+		if (rs != null) {
+			try {
+				if (!rs.isClosed()) {
+					rs.close();
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				rs = null;
+			}
+		}
+		
+		if (pstmt != null) {
+			try {
+				if (!pstmt.isClosed()) {
+					pstmt.close();
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				pstmt = null;
+			}
+		}
+		
+		if (conn != null) {
+			try {
+				if (!conn.isClosed()) {
+					conn.close();
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				conn = null;
+			}
+		}
 	}
 }

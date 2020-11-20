@@ -21,8 +21,6 @@ import conn.DBConnect;
 import model.Member;
 
 public class ListDaoImpl {
-	DBConnect db = DBConnect.getInstance();
-	
 	public List<Member> selectAll() {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -33,7 +31,7 @@ public class ListDaoImpl {
 		ArrayList<Member> list = new ArrayList<Member>();
 		
 		try {
-			conn = db.getConnection();
+			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -44,6 +42,8 @@ public class ListDaoImpl {
 			
 		}catch(Exception ex) {
 			ex.printStackTrace();
+		}finally {
+			DBConnect.close(rs, pstmt, conn);
 		}
 		
 		return list;

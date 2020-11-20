@@ -18,7 +18,6 @@ import conn.DBConnect;
 import model.Member;
 
 public class EditDaoImpl {
-	DBConnect db = DBConnect.getInstance();
 	Connection conn;
 	PreparedStatement pstmt;
 	ResultSet rs;
@@ -31,14 +30,17 @@ public class EditDaoImpl {
 			sql = "update member_tbl_mvc set ";
 			sql += "pwd = ?, name = ?, email = ?";
 			
-			conn = db.getConnection();
+			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, m.getPwd());
 			pstmt.setString(2, m.getName());
 			pstmt.setString(3, m.getEmail());
+			pstmt.executeUpdate();
 			
 		}catch(Exception ex) {
 			ex.printStackTrace();
+		}finally {
+			DBConnect.close(pstmt, conn);
 		}		
 		return;
 	}
@@ -50,7 +52,7 @@ public class EditDaoImpl {
 			
 			sql = "select * from member_tbl_mvc where = ?";
 			
-			conn = db.getConnection();
+			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
@@ -63,6 +65,8 @@ public class EditDaoImpl {
 			}			
 		}catch(Exception ex) {
 			ex.printStackTrace();
+		}finally {
+			DBConnect.close(rs, pstmt, conn);
 		}
 		
 		return m;
